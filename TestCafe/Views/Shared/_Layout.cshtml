@@ -1,0 +1,48 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestCafe</title>
+    <link rel="stylesheet" href="~/css/_layout.css" />
+</head>
+<body>
+    <header class="page-left">
+        <div style="position: fixed">
+
+        <div class="page-header">
+            <h1>Test Cafe</h1>
+        </div>
+
+        <nav class="page-nav">
+            <ul class="page-nav-ul">
+                <li class="page-nav-item">
+                    <a class="page-nav-item-link" asp-controller="Home" asp-action="MainMenu" id="MainMenu">
+                        <span>Main Menu</span>
+                    </a>
+                </li>
+                <li class="page-nav-item">
+                        <a class="page-nav-item-link" asp-controller="Home" asp-action="DrinkMenu" id="DrinkMenu">
+                        <span>Drink Menu</span>
+                    </a>
+                </li>
+                <li class="page-nav-item">
+                        <a class="page-nav-item-link" asp-controller="Home" asp-action="AboutMe" id="AboutMe">
+                        <span>About Me</span>
+                    </a>
+                </li>
+                <li class="page-nav-item">
+                        <a class="page-nav-item-link" asp-controller="Home" asp-action="Contacts" id="Contacts">
+                        <span>Contacts</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+        <div class="page-right">
+            @RenderBody()
+        </div>
+</body>
+</html>

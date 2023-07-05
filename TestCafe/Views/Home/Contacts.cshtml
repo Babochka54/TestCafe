@@ -1,0 +1,31 @@
+﻿@model IndexModel;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/AboutUs.css" />
+</head>
+<body>
+    <div class="about-container">
+        <h2 class="about-header">Contacts</h2>
+        <p class="about-body">
+            Alexey Lumpov.<br /><br />
+            Telegram: @@Lucky37021 <br />
+            Email: something37021@@gmail.com<br />
+            VK: <a href="https://vk.com/lumpovalex">https://vk.com/lumpovalex</a>
+        </p>
+    </div>
+
+    <script>
+
+        function setStyle() {
+            var item = document.getElementById("@Model.NavSelected");
+            item.className = "page-nav-item-link active";
+        }
+        setStyle();
+
+    </script>
+</body>
+</html>

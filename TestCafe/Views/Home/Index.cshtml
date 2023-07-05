@@ -1,0 +1,81 @@
+﻿@model IndexModel;
+
+<div class="container">
+    
+    <link rel="stylesheet" href="~/css/menu.css" />
+
+    <nav class="page-content-category">
+        <ul class="page-content-category-list">
+            @foreach(var c in Model.categories)
+            {
+                <li class="page-content-category-item">
+                    <a href="#" class="page-content-category-link" id="@c.name">
+                        @c.name
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+
+    @foreach(Category c in Model.categories)
+     {
+            <div data-id="@c.name" class="page-content-item-container">
+                <ul class="page-content-item-list">
+                @foreach (MenuItem item in Model.items.Where(i => i.Category.name == c.name))
+                {
+                    <li class="page-content-item-listItem">
+                        <img class="page-content-item-image" src="@Url.Content($"~/images/{item.ItemName.Replace(" ", "")}.jpg")" alt="Image" />
+                        <div class="page-content-item-body">
+                            <h2 class="page-content-item-header-name">@item.ItemName <span class="page-content-item-header-price">@item.Price $</span></h2>
+                            <p class="page-content-item-description">@item.Descriprion</p>
+                        </div>
+                    </li>
+                }
+                </ul>
+            </div>
+     }
+    
+    <script>
+        function setStyle(){
+            var item = document.getElementById("@Model.NavSelected");
+            item.className = "page-nav-item-link active";
+        }
+        setStyle();
+
+        function HideItems(){
+            var containers = document.getElementsByClassName("page-content-item-container");
+
+            for(let i = 0; i < containers.length; i++){
+                containers[i].style.display = "none";
+            }
+        }
+        HideItems();
+
+        function SelectCategory(category){
+
+            var container = document.querySelector(`[data-id='${category}'`);
+            container.style.display = "flex";
+
+            let categories = document.getElementsByClassName("page-content-category-link");
+
+            for(let i = 0; i < categories.length; i++){
+                categories[i].classList.remove("active");
+            }
+
+            let selected = document.getElementById(category);
+            selected.classList.add("active");
+        }
+
+        SelectCategory("@Model.categories[0].name");
+        
+
+        var categories = document.getElementsByClassName("page-content-category-link");
+        for(let i = 0; i < categories.length; i++){
+            categories[i].addEventListener("click", function(e){
+                HideItems();
+                SelectCategory(e.target.id);
+            });
+        }
+
+    </script>
+</div>

@@ -1,0 +1,30 @@
+﻿@model IndexModel;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/AboutUs.css"/>
+</head>
+<body>
+    <div class="about-container">
+        <h2 class="about-header">About Me</h2>
+        <p class="about-body">
+                This site was created by Alexey Lumpov.<br/><br/>
+                For now, this is my first project. All the skills I needed for a job I got on my own from open sources. <br/><br/>
+                For the HR, all my contacts are in the page "Contacts".
+            </p>
+    </div>
+
+    <script>
+
+        function setStyle(){
+            var item = document.getElementById("@Model.NavSelected");
+            item.className = "page-nav-item-link active";
+        }
+        setStyle();
+
+     </script>
+</body>
+</html>
